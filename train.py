@@ -30,10 +30,10 @@ def word2vec(input_file_name,
         else:
             pos_pairs, neg_pairs = self.data.get_pairs_by_neg_sampling(pos_pairs, 5)
 
-        pos_u = [int(pair[0]) for pair in pos_pairs]
-        pos_v = [int(pair[1]) for pair in pos_pairs]
-        neg_u = [int(pair[0]) for pair in neg_pairs]
-        neg_v = [int(pair[1]) for pair in neg_pairs]
+        pos_u = [pair[0] for pair in pos_pairs]
+        pos_v = [pair[1] for pair in pos_pairs]
+        neg_u = [pair[0] for pair in neg_pairs]
+        neg_v = [pair[1] for pair in neg_pairs]
 
         self.optimizer.zero_grad()
         loss = self.skip_gram_model.forward(pos_u, pos_v, neg_u, neg_v)
